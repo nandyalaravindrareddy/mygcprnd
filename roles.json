@@ -9,6 +9,11 @@
             "acct_id": "project-viewer",
             "display_name": "Project Viewer Role created via Terrafrom",
             "project-role-pairs": {"quixotic-height-349700": "roles/viewer"}
+          },
+         {
+            "acct_id": "storage-object-admin",
+            "display_name": "Cloud Storage Object admin Role created via Terrafrom",
+            "project-role-pairs": {"quixotic-height-349700": "roles/storage.objectAdmin"}
           }
          
         ]
