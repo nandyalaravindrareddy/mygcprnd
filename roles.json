@@ -1,15 +1,1 @@
-{
-    "inputs": [
-          {
-            "acct_id": "bigquery-admin",
-            "display_name": "Infra Build account created via Terraform ",
-            "project-role-pairs": {"quixotic-height-349700": "roles/bigquery.admin"}
-          },
-         {
-            "acct_id": "storage-object-admin",
-            "display_name": "Cloud Storage Object admin Role created via Terrafrom by ravi",
-            "project-role-pairs": {"quixotic-height-349700": "roles/storage.objectAdmin"}
-          }
-         
-        ]
-  }
+{"inputs":[{"acct_id":"bigquery-admin","display_name":"Bigquery admin Role created via Terraform by ravi","project-role-pairs":{"projectId":"quixotic-height-349700","role":"roles/bigquery.admin"}},{"acct_id":"storage-object-admin","display_name":"Cloud Storage Object admin Role created via Terraform by ravi","project-role-pairs":{"projectId":"quixotic-height-349700","role":"roles/storage.objectAdmin"}},{"acct_id":"logging-admin","display_name":"Logging admin Role created via Terraform by ravi","project-role-pairs":{"projectId":"quixotic-height-349700","role":"roles/logging.admin"}}]}
