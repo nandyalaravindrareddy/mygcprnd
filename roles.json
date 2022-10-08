@@ -1,5 +1,4 @@
-{
-    "inputs": [
+[
           {
             "acct_id": "bigquery-admin",
             "display_name": "Infra Build account created via Terraform by ravi",
@@ -12,4 +11,3 @@
           }
          
         ]
-  }
