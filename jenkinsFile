@@ -1,0 +1,49 @@
+pipeline{
+    agent any
+    environment {
+        CLOUDSDK_CORE_PROJECT = 'quixotic-height-349700'
+        CLIENT_EMAIL = 'terraform-serviceacct@quixotic-height-349700.iam.gserviceaccount.com'
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('gcloud-creds')
+        GOOGLE_CLOUD_KEYFILE_JSON = credentials('gcloud-creds')
+        
+    }
+    tools {
+        terraform 'terraformv1.3.2'
+    }   
+    stages{
+        stage('test'){
+            steps{
+               
+                sh '''
+                gcloud version
+                gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+                gcloud compute zones list
+                '''
+                
+            }
+        }
+        stage('Git Checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'f8947fe0-fcc8-42f2-ac4e-83346fba2ce3', url: 'https://github.com/nandyalaravindrareddy/mygcprnd'
+            }
+        }
+        stage('Terraform Init'){
+            steps{
+                sh 'gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"'
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Apply'){
+            steps{
+                sh 'gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"'
+                sh 'terraform apply --auto-approve'
+            }
+        }
+    }
+    post {
+        always {
+            sh 'gcloud auth revoke $CLIENT_EMAIL'
+        }
+    }
+
+}
