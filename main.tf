@@ -31,7 +31,7 @@ locals {
 
   json_data_7 = jsondecode(file("./roles.json"))
 
-  helper_list = flatten([for v in local.json_data_7.inputs :
+  helper_list = flatten([for v in local.json_data_7.saroles :
     [for project, role in v.project-role-pairs :
       { "project" = project
         "role"    = role
@@ -43,7 +43,7 @@ locals {
 
 # Creates a Service Account for each top level in input
 resource "google_service_account" "service_accounts_for_each_7" {
-  for_each     = { for v in local.json_data_7.inputs : v.acct_id => v.display_name }
+  for_each     = { for v in local.json_data_7.saroles : v.acct_id => v.display_name }
   account_id   = each.key
   display_name = each.value
 }
