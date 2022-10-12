@@ -31,7 +31,7 @@ locals {
 
   json_data_7 = jsondecode(file("./roles.json"))
 
-  helper_list = flatten([for v in local.json_data_7.inputs :
+  helper_list = flatten([for v in local.json_data_7.saroles :
     [for project, role in v.project-role-pairs :
       { "project" = project
         "role"    = role
