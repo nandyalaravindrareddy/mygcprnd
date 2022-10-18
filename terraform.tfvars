@@ -1,2 +1,2 @@
 project                  = "quixotic-height-349700"
-credentials_file         = "terraform-serviceacct.json"
+credentials_file         = "/home/india/terraform-serviceacct.json"

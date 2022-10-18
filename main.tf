@@ -14,8 +14,12 @@ terraform {
 
 }
 
+provider "vault" {
+  address = var.vault_addr
+  token   = var.vault_token
+}
+
 provider "google" {
-  #credentials = file(var.credentials_file)
   project = var.project
   region  = var.region
   zone    = var.zone
@@ -26,6 +30,24 @@ provider "google" {
     send_after      = "5s"
   }
 }
+
+/*module "gcp_defaults" {
+  source = "./vaultsecrets"
+
+  path = "gcp"
+  gcp_project      = var.project
+  gcp_roleset_name = "oauth-role"
+  gcp_credentials  = file(var.credentials_file)
+
+  gcp_bindings = [
+    {
+      resource = "//cloudresourcemanager.googleapis.com/projects/${var.project}"
+      roles = [
+        "roles/editor"
+      ]
+    }
+  ]
+}*/
 
 locals {
 
