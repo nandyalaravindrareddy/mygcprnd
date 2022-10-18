@@ -1,1 +1,1 @@
-{"saroles":[{"acct_id":"bigquery-admin","display_name":"Bigquery admin Role created via Terraform by ravi","project-role-pairs":{"quixotic-height-349700":"roles/bigquery.admin"}},{"acct_id":"compute-instance-admin","display_name":"Compute Instance admin Role created via Terraform by ravi","project-role-pairs":{"quixotic-height-349700":"roles/compute.instanceAdmin"}}]}
+{"saroles":[]}
