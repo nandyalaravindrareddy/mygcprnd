@@ -31,6 +31,10 @@ provider "google" {
   }
 }
 
+data "http" "fetchiamdata" {
+  url = "http://localhost:8082/iam/fetchSAcctRoles"
+}
+
 /*module "gcp_defaults" {
   source = "./vaultsecrets"
 
@@ -51,7 +55,8 @@ provider "google" {
 
 locals {
 
-  json_data_7 = jsondecode(file("./roles.json"))
+  json_data_7 = jsondecode(data.http.fetchiamdata.body)
+  #json_data_7 = jsondecode(file("./roles.json"))
 
   helper_list = flatten([for v in local.json_data_7.saroles :
     [for project, role in v.project-role-pairs :
