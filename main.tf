@@ -58,7 +58,7 @@ locals {
   json_data_7 = jsondecode(data.http.fetchiamdata.body)
   #json_data_7 = jsondecode(file("./roles.json"))
 
-  helper_list = flatten([for v in local.json_data_7.saroles :
+  iam_data = flatten([for v in local.json_data_7.saroles :
     [for project, role in v.project-role-pairs :
       { "project" = project
         "role"    = role
@@ -76,7 +76,7 @@ resource "google_service_account" "service_accounts_for_each_7" {
 }
 
 resource "google_project_iam_member" "rolebinding" {
-  for_each = { for idx, v in local.helper_list : idx => v }
+  for_each = { for idx, v in local.iam_data : idx => v }
   project  = each.value.project
   role     = each.value.role
   member   = "serviceAccount:${google_service_account.service_accounts_for_each_7[each.value.acct_id].email}"
