@@ -84,9 +84,8 @@ resource "google_project_iam_member" "rolebinding" {
 }
 
 
-resource "google_compute_network" "vpc_network" {
+/*resource "google_compute_network" "vpc_network" {
   name = "terraform-netowrk"
-
-}
+}*/
 
 
