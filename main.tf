@@ -56,8 +56,8 @@ data "http" "fetchiamdata" {
 
 locals {
 
-  json_data_7 = jsondecode(data.http.fetchiamdata.body)
-  #json_data_7 = jsondecode(file("./roles.json"))
+  #json_data_7 = jsondecode(data.http.fetchiamdata.body)
+  json_data_7 = jsondecode(file("./roles.json"))
 
   iam_data = flatten([for v in local.json_data_7.saroles :
     [for project, role in v.project-role-pairs :
