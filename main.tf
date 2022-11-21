@@ -31,10 +31,10 @@ provider "google" {
   }
 }
 
-data "http" "fetchiamdata" {
+/*data "http" "fetchiamdata" {
   #url = "http://localhost:8082/iam/fetchSAcctRoles"
   url = "http://india-VPCEA33EN:8082/iam/fetchSAcctRoles"
-}
+}*/
 
 /*module "gcp_defaults" {
   source = "./vaultsecrets"
